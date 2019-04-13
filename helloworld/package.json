@@ -1,0 +1,10 @@
+{
+  "name": "helloworld",
+  "version": "0.0.1",
+  "description": "A simple Hello World app",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "tj",
+  "license": "ISC"
+}
