@@ -1,9 +1,9 @@
 # https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_splatting
 
+# Splatting is a method of passing a collection of parameters values to a command
+
 # The traditional way - no splatting
 Copy-Item -Path "test.txt" -Destination "test2.txt" -WhatIf
-
-# Splatting is a method of passing a collection of parameters values to a command
 
 # Splatting with hash table
 $foo = @{ 
@@ -11,8 +11,6 @@ $foo = @{
     Destination = "test2.txt"
     WhatIf = $true 
 }
-# in a single line
-$foo = @{ Path = "test.txt"; Destination = "test2.txt"; WhatIf = $true }
 Copy-Item @foo
 
 # Splatting with array (positional parameters only)
@@ -20,26 +18,22 @@ $bar = "test.txt", "test2.txt"
 Copy-Item @bar -WhatIf
 
 # Inline parameters
-function f1 ($a, $b, $c) {
+function f1 ($a, $b) {
     $a
     $b
-    $c
-    $PSBoundParameters
     $PSCmdlet
 }
-f1 -a "a" -b 2 -c $true
+f1 -a "a" -b 2
 
 # Parameter list
 function f2 {
-    param ($a, $b, $c)
+    param ($a, $b)
     $a
     $b
-    $c
-    $PSBoundParameters
     $PSCmdlet
 }
-f2 -a "b" -b 2 -c $true
-f2 2 a $false
+f2 -a "a" -b 2
+
 
 # Advanced function
 function f3 {
@@ -52,18 +46,11 @@ function f3 {
         [ValidateNotNullOrEmpty()]
         [string]
         $a,
-        $b,
-        $c
-    )
-    
-    begin {}
-    process {
-        $a
         $b
-        $c
-        $PSBoundParameters
-        $PSCmdlet.CurrentProviderLocation("FileSystem")   
-    }
-    end {}
+    )
+    $a
+    $b
+    $PSCmdlet.GetType()
+    $PSCmdlet.CurrentProviderLocation("FileSystem").Path   
 }
-f3 -a "a" -b 2 -c $true
+f3 -a "a" -b 2
