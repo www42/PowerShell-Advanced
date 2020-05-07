@@ -50,7 +50,18 @@ function f3 {
     )
     $a
     $b
-    $PSCmdlet.GetType()
-    $PSCmdlet.CurrentProviderLocation("FileSystem").Path   
 }
+
+function myping {
+    param($ip)
+    ping $ip
+}
+
+get-command myping
+
+myping -ip 8.8.8.8
+
+"8.8.8.8" | myping
+
+
 f3 -a "a" -b 2
