@@ -31,8 +31,8 @@ Get-Command -Module AWS.Tools.Common
 # Create IAM user with access keys
 # Add a new profile
 Set-AWSCredential `
-    -AccessKey 'AKIAYAJQFJGHAJWRSA3S' `
-    -SecretKey '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' `
+    -AccessKey xxx `
+    -SecretKey yyy `
     -StoreAs 'default'
 
 ls -l $HOME/.aws
