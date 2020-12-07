@@ -17,6 +17,7 @@ function Get-AzCachedAccessToken() {
     
     $token = $profileClient.AcquireAccessToken($currentAzureContext.Tenant.TenantId)
     $token.AccessToken
+}
 
 Login-AzAccount
 
