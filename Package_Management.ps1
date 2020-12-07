@@ -1,20 +1,4 @@
-﻿$VmName = 'PSA'
-$User = 'Administrator'
-$Pw = 'Pa55w.rd'
-
-$SecPw = ConvertTo-SecureString -String $Pw -AsPlainText -Force
-$Cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User,$SecPw
-
-Start-VM -Name $VmName
-
-$PSA = New-PSSession -VMName $VmName -Credential $Cred
-
-Enter-PSSession $PSA
-
-
-
-
-# =========================
+﻿# =========================
 # Module Package Management
 # =========================
 
