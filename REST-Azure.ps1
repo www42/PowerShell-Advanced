@@ -1,8 +1,4 @@
-function Get-AzBearerToken {
-    # From Stephane Lapointe
-    # https://www.codeisahighway.com/
-    # https://github.com/slapointe/azure-scripts/tree/master/bearer-token    
-    
+function Get-AzCachedAccessToken() {
     $ErrorActionPreference = 'Stop'
     
     if (-not (Get-Module -Name Az.Accounts)) {
@@ -21,15 +17,19 @@ function Get-AzBearerToken {
     
     $token = $profileClient.AcquireAccessToken($currentAzureContext.Tenant.TenantId)
     $token.AccessToken
-
 }
 
+Login-AzAccount
 
-# Call the Microsoft Graph
-$headers = @{ 
-    "Authorization" = ("Bearer {0}" -f (Get-AzBearerToken));
+$SubscriptionId = 'ffcb38a5-8428-40c4-98b7-77013eac7ec5'
+
+$URL = "https://management.azure.com/subscriptions/$subscriptionId/resourcegroups?api-version=2017-05-10"
+
+$Headers = @{ 
+    "Authorization" = ("Bearer {0}" -f (Get-AzCachedAccessToken));
     "Content-Type" = "application/json";
 }
 
-# Output response as a JSON file
-Invoke-RestMethod -Method Get -Uri ("https://graph.microsoft.com/v1.0/me" -f $resourceId) -Headers $headers -OutFile $output
+$Response = Invoke-RestMethod -Uri $URL -Method Get -Headers $Headers
+
+$Response | ConvertTo-Json
