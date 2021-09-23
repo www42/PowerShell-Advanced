@@ -1,3 +1,6 @@
+# Azure API Browser: List ResourceGroups in a Subscription
+# https://docs.microsoft.com/en-us/rest/api/resources/resource-groups
+
 function Get-AzCachedAccessToken() {
     $ErrorActionPreference = 'Stop'
     
@@ -21,7 +24,7 @@ function Get-AzCachedAccessToken() {
 
 Login-AzAccount
 
-$SubscriptionId = 'ffcb38a5-8428-40c4-98b7-77013eac7ec5'
+$SubscriptionId = '69aa003c-1d8d-4ce8-b47d-88a70d85145d'
 
 $URL = "https://management.azure.com/subscriptions/$subscriptionId/resourcegroups?api-version=2017-05-10"
 
