@@ -8,6 +8,7 @@
 Get-PackageSource
 Register-PackageSource -Name PoshTestGallery -Location https://www.poshtestgallery.com/api/v2/ -ProviderName PowerShellGet -Trusted:$false
 Find-Module -Name AzureAD.Standard.Preview -AllVersions
+Find-Module -Name AzureAD.Standard.Preview -AllVersions | Sort-Object PublishedDate -Descending | ft Name,Version,PublishedDate
 # Version 0.0.0.10 is latest
 
 # To install module at scope `AllUsers` run PowerShell as Admin
@@ -16,9 +17,8 @@ Find-Module -Name AzureAD.Standard.Preview -AllVersions
 Install-Module -Name AzureAD.Standard.Preview -RequiredVersion 0.0.0.10 -Scope AllUsers
 Get-Module -ListAvailable -Name AzureAD.Standard.Preview
 
-
+# Let's have fun with AzureAD
 Get-Command -Module AzureAD.Standard.Preview
 Connect-AzureAD
-Get-AzureADDomain
 Get-AzureADDomain | fl *
 Get-AzureADTenantDetail | fl *
