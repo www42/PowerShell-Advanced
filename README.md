@@ -11,4 +11,6 @@
 4. Interesting things
 
 
-## Labs
+## Wichtig
+
+[Your home for Microsoft Build](https://build.microsoft.com/en-US/home)
