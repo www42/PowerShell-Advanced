@@ -13,6 +13,6 @@
 
 ## Wichtig
 
-[Your home for Microsoft Build](https://build.microsoft.com/en-US/home){target="_blank"}
+[Your home for Microsoft Build](https://build.microsoft.com/en-US/home)
 
-<a >Click here</a>
+<a href="https://aiskillsnavigator.microsoft.com/" target="_blank">Microsoft AI Skill FestClick here</a>
