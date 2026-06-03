@@ -11,7 +11,7 @@
 4. Interesting things
 
 
-## Wichtig
+## Ganz Wichtig
 
 [Your home for Microsoft Build](https://build.microsoft.com/en-US/home)
 
